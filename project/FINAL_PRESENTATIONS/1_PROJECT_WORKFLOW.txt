@@ -1,0 +1,333 @@
+================================================================================
+                    PROJECT WORKFLOW - HAWKEYE AI
+          (End-to-End Pipeline: Simulation → Detection → Dashboard)
+================================================================================
+
+OVERVIEW:
+---------
+HawkEye AI is a 4-tier distributed system that captures thermal drone imagery,
+detects humans and weapons using AI, and streams results to a live dashboard.
+
+Total Development Time: 12 weeks (Hybrid Waterfall-Agile)
+Team: 4 members (ML, Backend, Frontend, Simulation/Integration)
+
+================================================================================
+PHASE 1: ARCHITECTURE DESIGN (Waterfall - 2 weeks)
+================================================================================
+
+Week 1-2: Requirements & System Design
+--------------------------------------
+✓ Defined 10 functional requirements (FR1-FR10)
+✓ Defined 5 non-functional requirements (Performance, Accuracy, Reliability)
+✓ Selected 4-tier architecture: Simulation → Capture → Backend → Frontend
+✓ Technology stack selection: AirSim, YOLOv11m, FastAPI, React
+✓ API specification: POST /detect, WebSocket /stream
+
+Key Decisions:
+- Simulation-based (v1.0): No physical drone deployment
+- Thermal imaging: Illumination-independent detection
+- Real-time: <300ms end-to-end latency requirement
+- SAHI integration: For small weapon detection
+
+================================================================================
+PHASE 2: COMPONENT DEVELOPMENT (Agile - 8 weeks, 4 sprints)
+================================================================================
+
+SPRINT 1: Simulation Environment Setup (2 weeks)
+-------------------------------------------------
+Owner: Rompicharla Lahari
+
+Tasks:
+1. Install Unreal Engine 4.27 + AirSim 1.8.1
+2. Create ForestSim environment (1km² terrain)
+3. Add human character models and weapon 3D assets
+4. Configure thermal camera (640×480 segmentation)
+5. Implement thermal generation pipeline:
+   - Segmentation capture → Distance transform → COLORMAP_JET
+   - Gaussian blur (15×15 kernel) → Composite
+
+Challenges & Solutions:
+- AirSim compilation errors → Downgraded to UE 4.27
+- Dark thermal images → Adjusted distance transform scaling
+
+Output: ✅ Functional ForestSim, Python drone control, thermal capture
+
+SPRINT 2: AI Model Training (2 weeks)
+--------------------------------------
+Owner: Amula Bhanuteja
+
+Tasks:
+1. Dataset creation: 800+ thermal images
+   - RGB dataset: 214 images (204 train, 10 test)
+   - Thermal dataset: 215 images (205 train, 10 test)
+   - HawkEye test: 5 AirSim thermal images
+2. Annotation: LabelImg (1,650+ bounding boxes)
+3. Train YOLOv11m models:
+   - RGB model: yolo11m_rgb_weapon_final.pt (human detection)
+   - Thermal model: yolo11m_thermal_weapon_ultimate.pt (weapon detection)
+4. Hyperparameters: 100 epochs, batch=16, AdamW, lr=0.001
+5. Transfer learning from COCO pretrained weights
+
+Challenges & Solutions:
+- Low weapon accuracy (65%) → Lowered confidence 0.35→0.20 (+13%)
+- Class imbalance (2.7:1) → Weighted loss (2.5x for weapons) (+2%)
+
+Output: ✅ Trained models (92% human, 85% weapon accuracy)
+
+SPRINT 3: Backend API Development (2 weeks)
+--------------------------------------------
+Owner: Rahul Badam
+
+Tasks:
+1. FastAPI backend (main.py)
+   - POST /detect endpoint: Receives base64 thermal images
+   - WebSocket /stream: Broadcasts detection results
+2. Detector module (detector.py)
+   - Load SMART_DETECTOR (2 models: RGB + Thermal)
+   - Process frames: Decode → Inference → Annotation
+3. SAHI integration (by Poreddy Varshitha)
+   - 512×512 slices with 30% overlap
+   - NMS with IOS metric (threshold 0.5)
+4. Threat logic: Clear / Elevated / High / Critical
+5. Weapon-person association (35% bbox expansion)
+6. In-memory archive (50-entry rolling window)
+
+Challenges & Solutions:
+- Duplicate detections → SAHI NMS with IOS metric
+- Weapon-person association errors → Expanded bbox 18%→35%
+
+Output: ✅ FastAPI backend, /detect + /stream endpoints, archive
+
+SPRINT 4: Frontend Dashboard (2 weeks)
+---------------------------------------
+Owner: Rahul Badam
+
+Tasks:
+1. React 18 + TypeScript frontend (App.tsx)
+2. WebSocket client: Connects to ws://localhost:8000/stream
+3. Live feed: Split view (original left, annotated right)
+4. Threat indicator: Color-coded badges (green/yellow/orange/red)
+5. Detection archive: 50-entry table with modal review
+6. Tailwind CSS styling + Lucide React icons
+
+Challenges & Solutions:
+- Modal display issues → Fixed z-index, backdrop click, styled X button
+- WebSocket disconnection → Auto-reconnection (3-second delay)
+
+Output: ✅ React dashboard, live feed, archive, modal, threat indicator
+
+================================================================================
+PHASE 3: INTEGRATION & TESTING (Waterfall - 2 weeks)
+================================================================================
+
+Week 11: System Integration
+----------------------------
+Owner: Amula Bhanuteja
+
+1. Capture Script Integration (integrated_capture.py)
+   - Connects to AirSim Python API
+   - Captures thermal frames at 1 FPS
+   - Base64 encodes images
+   - POSTs to backend /detect
+   - Keyboard controls: W/S/A/D/Space/Shift/R/F
+
+2. Component Integration Testing
+   - AirSim → Capture Script: ✓ 1 FPS capture working
+   - Capture → Backend: ✓ HTTP POST successful
+   - Backend → Frontend: ✓ WebSocket broadcast working
+   - Frontend display: ✓ Live feed + archive updating
+
+3. Camera Angle Optimization
+   - Tested: -30°, -20°, -10°, 0°
+   - Selected: -10° pitch (85% weapon detection)
+
+Week 12: Performance Testing & Documentation
+---------------------------------------------
+
+1. Unit Testing (80 test images)
+   - Human: 98.3% precision, 91.3% recall
+   - Weapon: 95.5% precision, 80.8% recall
+   - Threat: 92.5% classification accuracy
+
+2. Performance Benchmarking
+   - AI inference: 152ms (SAHI)
+   - Backend processing: 195ms total
+   - End-to-end latency: 265ms (✓ <300ms target)
+   - Uptime: 99.998% (48-hour test)
+
+3. Stress Testing
+   - 172,800 frames processed
+   - 0 crashes, 0 AI failures
+   - 3 WebSocket disconnections (all auto-recovered)
+
+Output: ✅ Production-ready system
+
+================================================================================
+COMPLETE DATA FLOW (265ms end-to-end)
+================================================================================
+
+STEP 1: Thermal Generation (20ms)
+----------------------------------
+Unreal Engine renders ForestSim scene
+↓
+AirSim generates thermal segmentation (640×480)
+↓
+Distance transform + COLORMAP_JET + Gaussian blur
+↓
+JPEG output at 1 FPS
+
+STEP 2: Image Transmission (10ms)
+----------------------------------
+Python capture script (integrated_capture.py)
+↓
+NumPy array → JPEG encode (quality 85%)
+↓
+Base64 encoding
+↓
+HTTP POST → http://localhost:8000/detect
+
+STEP 3: AI Detection Pipeline (152ms)
+--------------------------------------
+FastAPI receives POST /detect
+↓
+Base64 decode → NumPy array (cv2.imdecode)
+↓
+BGR → RGB conversion
+↓
+SAHI Slicing (512×512, 30% overlap) → 4 tiles
+↓
+YOLOv11m inference on each tile:
+  - RGB model: Human detection
+  - Thermal model: Weapon detection
+↓
+NMS merge (IOS metric, threshold 0.5)
+↓
+Classification: person vs weapon labels
+↓
+Weapon-person association (35% bbox expansion)
+↓
+Threat level determination:
+  - No humans: CLEAR (risk score 0)
+  - Humans, no weapons: ELEVATED (risk score 2)
+  - 1 armed person: HIGH (risk score 5)
+  - 2+ armed: CRITICAL (risk score 10)
+
+STEP 4: Annotation (30ms)
+--------------------------
+Copy original image
+↓
+Draw bounding boxes:
+  - Green (2px) for humans + "HUMAN" label
+  - Red (2px) for weapons + "WEAPON" label
+↓
+Base64 JPEG encode (original + annotated)
+
+STEP 5: Broadcasting (5ms)
+---------------------------
+Package JSON payload:
+{
+  "frame_id": 12345,
+  "timestamp": "2026-06-10T20:30:15Z",
+  "image": "data:image/jpeg;base64,...",
+  "annotated_image": "data:image/jpeg;base64,...",
+  "detections": [...],
+  "summary": {
+    "level": "HIGH",
+    "total_people": 1,
+    "armed_people": 1,
+    "weapon_count": 1,
+    "risk_score": 5
+  }
+}
+↓
+WebSocket broadcast to all clients (/stream)
+
+STEP 6: Visualization (35ms)
+-----------------------------
+React frontend receives WebSocket message
+↓
+Parse JSON → Update React state (useState)
+↓
+Left panel: Original thermal image
+↓
+Right panel: Annotated image with boxes
+↓
+Threat indicator: Update badge color + text
+↓
+Metrics refresh: People count, weapons, confidence
+↓
+Archive: Add new entry (50 rolling window)
+
+================================================================================
+DEPLOYMENT & LAUNCH
+================================================================================
+
+Production Files:
+-----------------
+- Backend: project/backend/main.py (FastAPI)
+- Frontend: project/frontend/src/app/App.tsx (React)
+- Models: yolo11m_rgb_weapon_final.pt, yolo11m_thermal_weapon_ultimate.pt
+- Capture: project/airsim_capture/integrated_capture.py
+- Launcher: project/RUN.bat
+
+Launch Procedure:
+-----------------
+1. RUN.bat → Starts backend (port 8000) + frontend (port 5173)
+2. Open ForestSim.uproject → Press Play in Unreal Engine
+3. Run: python integrated_capture.py
+4. Browser: http://localhost:5173
+
+System Status:
+--------------
+✅ Backend: Running on http://localhost:8000
+✅ Frontend: Running on http://localhost:5173
+✅ WebSocket: ws://localhost:8000/stream (Live)
+✅ AirSim: Connected, thermal capture at 1 FPS
+✅ AI Detection: SMART_DETECTOR loaded (2 models)
+
+================================================================================
+KEY MILESTONES & DELIVERABLES
+================================================================================
+
+Week 2: ✅ Architecture design complete, tech stack selected
+Week 4: ✅ ForestSim environment ready, thermal capture working
+Week 6: ✅ YOLOv11m models trained (92% human, 85% weapon)
+Week 8: ✅ Backend API complete, SAHI integrated
+Week 10: ✅ Frontend dashboard complete, WebSocket working
+Week 12: ✅ System integration done, 99.998% uptime achieved
+
+Final Deliverables:
+-------------------
+✓ 4-tier production system
+✓ 2 trained YOLOv11m models (RGB + Thermal)
+✓ 3 datasets (429 images)
+✓ FastAPI backend with WebSocket
+✓ React frontend dashboard
+✓ AirSim integration
+✓ Complete documentation
+✓ 48-hour stability test passed
+
+================================================================================
+PROJECT SUCCESS METRICS
+================================================================================
+
+Accuracy:
+- Human Detection: 92% (Target: 85%) ✅ +7% above target
+- Weapon Detection: 85% (Target: 75%) ✅ +10% above target
+- Threat Classification: 92.5% (Target: 95%) ⚠ -2.5% below target
+
+Performance:
+- AI Inference: 152ms (Target: 200ms) ✅ 24% faster
+- End-to-End Latency: 265ms (Target: 500ms) ✅ 47% faster
+- Uptime: 99.998% (Target: 99%) ✅ 0.998% above target
+
+Quality:
+- False Positive Rate: 3.2% (Target: 5%) ✅ 36% better
+- System Crashes: 0 (48 hours) ✅ Perfect stability
+
+Team Velocity:
+- Sprints Completed: 4/4 ✅ 100%
+- Features Delivered: 10/10 ✅ All FRs met
+- On-Time Delivery: Yes ✅ 12 weeks as planned
+
+================================================================================

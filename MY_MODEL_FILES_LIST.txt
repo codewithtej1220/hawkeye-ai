@@ -1,0 +1,73 @@
+================================================================================
+  MY FINAL MODEL FILES - SMART_DETECTOR
+================================================================================
+
+MODELS (3 files):
+-----------------
+1. C:\Dev\Hawkeye-thermal\yolo11m.pt (base model)
+2. C:\Dev\Hawkeye-thermal\yolo11m_rgb_weapon_final.pt (RGB model - for humans)
+3. C:\Dev\Hawkeye-thermal\yolo11m_thermal_weapon_ultimate.pt (Thermal model - for weapons)
+
+
+DATASETS (3 folders):
+---------------------
+1. C:\Dev\Hawkeye-thermal\RGB_dataset\RGB.v2i.yolov11\
+   - C:\Dev\Hawkeye-thermal\RGB_dataset\RGB.v2i.yolov11\train\images\ (204 images)
+   - C:\Dev\Hawkeye-thermal\RGB_dataset\RGB.v2i.yolov11\train\labels\
+   - C:\Dev\Hawkeye-thermal\RGB_dataset\RGB.v2i.yolov11\test\images\ (10 images)
+   - C:\Dev\Hawkeye-thermal\RGB_dataset\RGB.v2i.yolov11\test\labels\
+
+2. C:\Dev\Hawkeye-thermal\thermal_dataset\thermal.v1i.yolov11\
+   - C:\Dev\Hawkeye-thermal\thermal_dataset\thermal.v1i.yolov11\train\images\ (205 images)
+   - C:\Dev\Hawkeye-thermal\thermal_dataset\thermal.v1i.yolov11\train\labels\
+   - C:\Dev\Hawkeye-thermal\thermal_dataset\thermal.v1i.yolov11\test\images\ (10 images)
+   - C:\Dev\Hawkeye-thermal\thermal_dataset\thermal.v1i.yolov11\test\labels\
+
+3. C:\Dev\Hawkeye-thermal\HawkEye_Dataset\HawkEye_Manual_Dataset\thermal\
+   - C:\Dev\Hawkeye-thermal\HawkEye_Dataset\HawkEye_Manual_Dataset\thermal\sprint\
+   - C:\Dev\Hawkeye-thermal\HawkEye_Dataset\HawkEye_Manual_Dataset\thermal\idle_aiming\
+   - C:\Dev\Hawkeye-thermal\HawkEye_Dataset\HawkEye_Manual_Dataset\thermal\run_forward\
+   - C:\Dev\Hawkeye-thermal\HawkEye_Dataset\HawkEye_Manual_Dataset\thermal\walk forward\
+   - C:\Dev\Hawkeye-thermal\HawkEye_Dataset\HawkEye_Manual_Dataset\thermal\crouching_left\
+
+
+TRAINING SCRIPTS (2 files):
+---------------------------
+1. C:\Dev\Hawkeye-thermal\train_rgb_weapon_detector.py
+2. C:\Dev\Hawkeye-thermal\train_thermal_weapon_ultimate.py
+
+
+DETECTOR SCRIPT (1 file):
+-------------------------
+1. C:\Dev\Hawkeye-thermal\SMART_DETECTOR.py
+
+
+CONFIG FILES (2 files):
+-----------------------
+1. C:\Dev\Hawkeye-thermal\rgb_data_fixed.yaml
+2. C:\Dev\Hawkeye-thermal\thermal_data_fixed.yaml
+
+
+================================================================================
+TOTAL FILES USED FOR MY MODEL:
+================================================================================
+- Models: 3 files
+- Training Scripts: 2 files
+- Detector: 1 file
+- Configs: 2 files
+- Datasets: 3 folders (419 images total)
+
+================================================================================
+USAGE:
+================================================================================
+
+To train RGB model:
+  python train_rgb_weapon_detector.py
+
+To train thermal model:
+  python train_thermal_weapon_ultimate.py
+
+To run detection:
+  python SMART_DETECTOR.py
+
+================================================================================
