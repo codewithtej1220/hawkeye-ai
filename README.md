@@ -1,4 +1,4 @@
-# 🚁 HawkEye AI - Drone-Based Intelligent Surveillance System
+# HawkEye AI - Drone-Based Intelligent Surveillance System
 
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/)
 [![React 18](https://img.shields.io/badge/react-18-61dafb.svg)](https://reactjs.org/)
@@ -11,7 +11,7 @@ Autonomous drone-based thermal surveillance system combining Microsoft AirSim si
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Key Features](#key-features)
@@ -26,47 +26,47 @@ Autonomous drone-based thermal surveillance system combining Microsoft AirSim si
 
 ---
 
-## 🎯 Overview
+## Overview
 
 HawkEye AI addresses critical failures in traditional surveillance systems:
-- ❌ **Illumination Dependency**: RGB cameras fail in darkness
-- ❌ **Human Fatigue**: Operators experience cognitive decline after 20-30 minutes
-- ❌ **Fixed Blind Spots**: Static cameras create exploitable coverage gaps
-- ❌ **Delayed Response**: Manual assessment introduces critical latency
+- **Illumination Dependency**: RGB cameras fail in darkness
+- **Human Fatigue**: Operators experience cognitive decline after 20-30 minutes
+- **Fixed Blind Spots**: Static cameras create exploitable coverage gaps
+- **Delayed Response**: Manual assessment introduces critical latency
 
 ### Our Solution
 
-✅ **Thermal Imaging**: 24/7 operation independent of lighting conditions  
-✅ **AI-Powered Detection**: Real-time human & weapon detection with 92% and 85% accuracy  
-✅ **SAHI Integration**: +20% improvement in small object (weapon) detection  
-✅ **Real-Time Dashboard**: Sub-300ms end-to-end latency with live WebSocket streaming  
-✅ **4-Level Threat Classification**: Clear → Elevated → High → Critical  
+- **Thermal Imaging**: 24/7 operation independent of lighting conditions  
+- **AI-Powered Detection**: Real-time human and weapon detection with 92% and 85% accuracy  
+- **SAHI Integration**: 20% improvement in small object weapon detection  
+- **Real-Time Dashboard**: Sub-300ms end-to-end latency with live WebSocket streaming  
+- **4-Level Threat Classification**: Clear, Elevated, High, Critical  
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-### 🔍 AI Detection
+### AI Detection
 - **SMART_DETECTOR**: Dual-model approach (RGB + Thermal models)
 - **YOLOv11m Architecture**: 20M parameters, optimized for thermal images
 - **SAHI (Slicing Aided Hyper Inference)**: 512×512 slicing with 30% overlap
 - **Weapon Detection**: 85% accuracy (improved from 65% using SAHI)
 - **Human Detection**: 92% accuracy with 98.3% precision
 
-### 🎯 Threat Classification
+### Threat Classification
 - **4-Level System**: Clear / Elevated / High / Critical
 - **Intelligent Association**: Weapon-to-person linking with 35% bbox expansion
 - **Risk Scoring**: 0-10 scale with real-time assessment
 - **Low False Positives**: Only 3.2% false alarm rate
 
-### 🖥️ Web Dashboard
+### Web Dashboard
 - **Live Feed**: Split-view (original + annotated thermal)
 - **Real-Time Updates**: WebSocket streaming at 1 FPS
 - **Color-Coded Alerts**: Green (human) / Red (weapon) bounding boxes
 - **Detection Archive**: 50-entry rolling window with searchable history
 - **Auto-Reconnection**: 3-second delay, 99.998% uptime
 
-### 🎮 Simulation Environment
+### Simulation Environment
 - **Microsoft AirSim 1.8.1**: High-fidelity drone simulation
 - **Unreal Engine 4.27**: Photorealistic ForestSim environment (1km²)
 - **Thermal Generation**: 6-step pipeline (segmentation → colormap → blur)
@@ -74,7 +74,7 @@ HawkEye AI addresses critical failures in traditional surveillance systems:
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -100,17 +100,17 @@ HawkEye AI addresses critical failures in traditional surveillance systems:
 
 ---
 
-## 📊 Performance Metrics
+## Performance Metrics
 
 | Metric | Value | Target | Status |
 |--------|-------|--------|--------|
-| **Human Detection** | 92% | 85% | ✅ +7% |
-| **Weapon Detection** | 85% | 75% | ✅ +10% |
-| **Threat Classification** | 92.5% | 95% | ⚠️ -2.5% |
-| **AI Inference Time** | 152ms | 200ms | ✅ 24% faster |
-| **End-to-End Latency** | 265ms | 500ms | ✅ 47% faster |
-| **False Positive Rate** | 3.2% | <5% | ✅ 36% better |
-| **System Uptime** | 99.998% | 99% | ✅ 0.998% above |
+| **Human Detection** | 92% | 85% | +7% |
+| **Weapon Detection** | 85% | 75% | +10% |
+| **Threat Classification** | 92.5% | 95% | -2.5% |
+| **AI Inference Time** | 152ms | 200ms | 24% faster |
+| **End-to-End Latency** | 265ms | 500ms | 47% faster |
+| **False Positive Rate** | 3.2% | <5% | 36% better |
+| **System Uptime** | 99.998% | 99% | 0.998% above |
 
 ### Detailed Accuracy (80 test images)
 
@@ -128,11 +128,11 @@ HawkEye AI addresses critical failures in traditional surveillance systems:
 
 **SAHI Impact:**
 - Without SAHI: 65% weapon detection (baseline)
-- With SAHI: 85% weapon detection (+20% improvement!)
+- With SAHI: 85% weapon detection (20% improvement)
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Simulation Layer
 - **Microsoft AirSim 1.8.1**: Drone simulation with thermal camera
@@ -167,7 +167,7 @@ HawkEye AI addresses critical failures in traditional surveillance systems:
 
 ---
 
-## 📥 Installation
+## Installation
 
 ### Prerequisites
 ```bash
@@ -224,7 +224,7 @@ npm install
 
 ---
 
-## 🚀 Usage
+## Usage
 
 ### Quick Start (All-in-One)
 ```bash
@@ -273,7 +273,7 @@ ESC:      Land and Exit
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 RTR_Project/
@@ -330,7 +330,7 @@ RTR_Project/
 
 ---
 
-## 👥 Team
+## Team
 
 **RTR Project Team** - JNTUH University College of Engineering
 
@@ -345,23 +345,23 @@ RTR_Project/
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
-- **Microsoft AirSim**: For the excellent drone simulation framework
-- **Ultralytics YOLO**: For the YOLOv11m object detection model
-- **SAHI Project**: For small object detection enhancement
-- **FastAPI**: For the modern async Python framework
-- **React Team**: For the UI library
+- Microsoft AirSim: For the excellent drone simulation framework
+- Ultralytics YOLO: For the YOLOv11m object detection model
+- SAHI Project: For small object detection enhancement
+- FastAPI: For the modern async Python framework
+- React Team: For the UI library
 
 ---
 
-## 📞 Contact
+## Contact
 
 For questions or collaboration:
 - Email: [your-email@example.com]
@@ -369,18 +369,16 @@ For questions or collaboration:
 
 ---
 
-## 🚀 Future Work
+## Future Work
 
-- [ ] Physical drone deployment (DJI Matrice 300 RTK)
-- [ ] Weapon type classification (rifle vs pistol vs knife)
-- [ ] Multi-object tracking across frames (DeepSORT)
-- [ ] Pose estimation (holstered vs ready)
-- [ ] CRPF and military integration
-- [ ] Edge deployment on NVIDIA Jetson Xavier NX
-- [ ] Model quantization (INT8) for faster inference
+- Physical drone deployment (DJI Matrice 300 RTK)
+- Weapon type classification (rifle vs pistol vs knife)
+- Multi-object tracking across frames (DeepSORT)
+- Pose estimation (holstered vs ready)
+- CRPF and military integration
+- Edge deployment on NVIDIA Jetson Xavier NX
+- Model quantization (INT8) for faster inference
 
 ---
 
-**Built with ❤️ by RTR Project Team | JNTUH 2025-2026**
-
-⭐ **Star this repo if you find it useful!**
+Built with care by RTR Project Team - JNTUH 2025-2026
