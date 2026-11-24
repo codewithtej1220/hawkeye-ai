@@ -7,20 +7,13 @@
   "Vehicles": {
     "Drone1": {
       "VehicleType": "SimpleFlight",
-      "X": 0,
-      "Y": 0,
-      "Z": -2,
-      "Yaw": 0
+      "X": 0, "Y": 0, "Z": -2, "Yaw": 0
     }
   },
   "CameraDefaults": {
     "CaptureSettings": [
-      {
-        "ImageType": 0,
-        "Width": 640,
-        "Height": 480,
-        "FOV_Degrees": 90
-      }
+      { "ImageType": 0, "Width": 1280, "Height": 960, "FOV_Degrees": 90 },
+      { "ImageType": 5, "Width": 1280, "Height": 960, "FOV_Degrees": 90 }
     ]
   }
 }
