@@ -17,7 +17,7 @@ from pynput import keyboard
 # CONFIGURATION
 # =========================================================
 
-BACKEND_URL = "http://localhost:8000"
+BACKEND_URL = "http://127.0.0.1:8000"  # not "localhost": on Windows it tries IPv6 first (~2 s per request)
 CAPTURE_FOLDER = "live_captures"
 TARGET_WIDTH = 640
 TARGET_HEIGHT = 480
