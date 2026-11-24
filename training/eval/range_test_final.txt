@@ -1,0 +1,84 @@
+Connected!
+Client Ver:1 (Min Req: 1), Server Ver:1 (Min Req: 1)
+
+[DETECTOR] Loaded hawkeye_real_yolo11m.pt + hawkeye_v3.pt + armed_classifier.pt
+[DISTANT] small-person search found 1 additional people
+[ZOOM-SPECIALIST] weapon (conf=0.63) found near person (conf=0.50)
+[ZOOM] weapon (conf=0.75) found near person (conf=0.54)
+fov 90 side      10 m @ 35 deg | person  105 px | est    11 m | found 2/2 | armed 1/2 | possible 1/2 | reported people [2, 1] | thermal_inferno
+[ZOOM-SPECIALIST] weapon (conf=0.52) found near person (conf=0.76)
+[ZOOM-SPECIALIST] weapon (conf=0.56) found near person (conf=0.75)
+fov 90 side      20 m @ 35 deg | person   47 px | est    20 m | found 2/2 | armed 0/2 | possible 2/2 | reported people [1, 1] | thermal_inferno
+fov 90 side      40 m @ 35 deg | person   27 px | est    33 m | found 2/2 | armed 0/2 | possible 0/2 | reported people [1, 1] | thermal_grey
+[DISTANT] small-person search found 1 additional people
+[DISTANT] small-person search found 1 additional people
+fov 90 side      60 m @ 35 deg | person   17 px | est    52 m | found 2/2 | armed 0/2 | possible 0/2 | reported people [1, 1] | thermal_grey
+[DISTANT] small-person search found 1 additional people
+[DISTANT] small-person search found 1 additional people
+fov 90 side      80 m @ 35 deg | person   12 px | est    65 m | found 2/2 | armed 0/2 | possible 0/2 | reported people [1, 1] | rgbt
+[DISTANT] small-person search found 1 additional people
+[DISTANT] small-person search found 1 additional people
+fov 90 side     100 m @ 35 deg | person    9 px | est     0 m | found 0/2 | armed 0/2 | possible 0/2 | reported people [1, 1] | rgbt
+fov 90 side     150 m @ 35 deg | person    6 px | est     0 m | found 0/2 | armed 0/2 | possible 0/2 | reported people [0, 0] | rgbt
+fov 90 side     200 m @ 35 deg | person    4 px | est     0 m | found 0/2 | armed 0/2 | possible 0/2 | reported people [0, 0] | rgbt
+[ZOOM-SPECIALIST] weapon (conf=0.64) found near person (conf=0.23)
+[ZOOM-SPECIALIST] weapon (conf=0.64) found near person (conf=0.42)
+fov 90 front     10 m @ 35 deg | person  107 px | est    12 m | found 2/2 | armed 0/2 | possible 2/2 | reported people [2, 1] | thermal_inferno
+[ZOOM] weapon (conf=0.67) found near person (conf=0.67)
+fov 90 front     20 m @ 35 deg | person   50 px | est    19 m | found 2/2 | armed 1/2 | possible 0/2 | reported people [1, 1] | thermal_inferno
+[DISTANT] small-person search found 1 additional people
+fov 90 front     40 m @ 35 deg | person   27 px | est    33 m | found 2/2 | armed 0/2 | possible 0/2 | reported people [1, 1] | rgbt
+[DISTANT] small-person search found 1 additional people
+[DISTANT] small-person search found 1 additional people
+fov 90 front     60 m @ 35 deg | person   17 px | est    48 m | found 2/2 | armed 0/2 | possible 0/2 | reported people [1, 1] | rgbt
+[DISTANT] small-person search found 1 additional people
+fov 90 front     80 m @ 35 deg | person   13 px | est    61 m | found 1/2 | armed 0/2 | possible 0/2 | reported people [1, 0] | rgbt
+fov 90 front    100 m @ 35 deg | person   12 px | est     0 m | found 0/2 | armed 0/2 | possible 0/2 | reported people [0, 0] | rgbt
+fov 90 front    150 m @ 35 deg | person    4 px | est     0 m | found 0/2 | armed 0/2 | possible 0/2 | reported people [0, 0] | rgbt
+fov 90 front    200 m @ 35 deg | person    4 px | est     0 m | found 0/2 | armed 0/2 | possible 0/2 | reported people [0, 0] | rgbt
+[ZOOM-SPECIALIST] weapon (conf=0.73) found near person (conf=0.61)
+[ZOOM-SPECIALIST] weapon (conf=0.55) found near person (conf=0.76)
+fov 25 side      10 m @ 35 deg | person  477 px | est    15 m | found 2/2 | armed 0/2 | possible 2/2 | reported people [2, 1] | thermal_inferno
+[ZOOM-SPECIALIST] weapon (conf=0.51) found near person (conf=0.72)
+fov 25 side      20 m @ 35 deg | person  246 px | est    20 m | found 2/2 | armed 0/2 | possible 1/2 | reported people [1, 1] | thermal_inferno
+[ZOOM] weapon (conf=0.62) found near person (conf=0.34)
+[ZOOM] weapon (conf=0.68) found near person (conf=0.41)
+fov 25 side      40 m @ 35 deg | person  107 px | est    43 m | found 2/2 | armed 2/2 | possible 0/2 | reported people [1, 1] | thermal_inferno
+[DISTANT] small-person search found 1 additional people
+[ZOOM-SPECIALIST] weapon (conf=0.61) found near person (conf=0.76)
+[DISTANT] small-person search found 1 additional people
+[ZOOM-SPECIALIST] weapon (conf=0.70) found near person (conf=0.76)
+[ZOOM-SPECIALIST] weapon (conf=0.69) found near person (conf=0.76)
+fov 25 side      60 m @ 35 deg | person   78 px | est    59 m | found 2/2 | armed 0/2 | possible 2/2 | reported people [1, 1] | rgbt
+[DISTANT] small-person search found 1 additional people
+[ZOOM-SPECIALIST] weapon (conf=0.52) found near person (conf=0.75)
+[DISTANT] small-person search found 1 additional people
+fov 25 side      80 m @ 35 deg | person   53 px | est    77 m | found 2/2 | armed 0/2 | possible 1/2 | reported people [1, 1] | rgbt
+[DISTANT] small-person search found 1 additional people
+[DISTANT] small-person search found 1 additional people
+fov 25 side     100 m @ 35 deg | person   47 px | est    89 m | found 2/2 | armed 0/2 | possible 0/2 | reported people [1, 1] | rgbt
+[DISTANT] small-person search found 1 additional people
+[DISTANT] small-person search found 1 additional people
+fov 25 side     150 m @ 35 deg | person   30 px | est   126 m | found 2/2 | armed 0/2 | possible 0/2 | reported people [2, 1] | rgbt
+fov 25 side     200 m @ 35 deg | person   21 px | est   173 m | found 2/2 | armed 0/2 | possible 0/2 | reported people [1, 1] | rgbt
+[ZOOM-SPECIALIST] weapon (conf=0.55) found near person (conf=0.39)
+[ZOOM-SPECIALIST] weapon (conf=0.53) found near person (conf=0.69)
+fov 25 front     10 m @ 35 deg | person  456 px | est    15 m | found 2/2 | armed 0/2 | possible 2/2 | reported people [2, 1] | thermal_inferno
+[ZOOM-SPECIALIST] weapon (conf=0.55) found near person (conf=0.74)
+fov 25 front     20 m @ 35 deg | person  230 px | est    21 m | found 2/2 | armed 0/2 | possible 1/2 | reported people [1, 1] | thermal_inferno
+[ZOOM-SPECIALIST] weapon (conf=0.67) found near person (conf=0.67)
+[ZOOM-SPECIALIST] weapon (conf=0.57) found near person (conf=0.22)
+[ZOOM-SPECIALIST] weapon (conf=0.60) found near person (conf=0.54)
+[ZOOM-SPECIALIST] weapon (conf=0.57) found near person (conf=0.54)
+fov 25 front     40 m @ 35 deg | person  124 px | est    46 m | found 2/2 | armed 0/2 | possible 2/2 | reported people [2, 1] | thermal_inferno
+[ZOOM-SPECIALIST] weapon (conf=0.78) found near person (conf=0.71)
+[ZOOM-SPECIALIST] weapon (conf=0.60) found near person (conf=0.73)
+fov 25 front     60 m @ 35 deg | person   81 px | est    59 m | found 2/2 | armed 0/2 | possible 2/2 | reported people [1, 1] | thermal_inferno
+[ZOOM-SPECIALIST] weapon (conf=0.54) found near person (conf=0.76)
+fov 25 front     80 m @ 35 deg | person   58 px | est    80 m | found 2/2 | armed 0/2 | possible 1/2 | reported people [1, 1] | thermal_inferno
+[ZOOM-SPECIALIST] weapon (conf=0.57) found near person (conf=0.72)
+fov 25 front    100 m @ 35 deg | person   44 px | est    91 m | found 2/2 | armed 0/2 | possible 1/2 | reported people [1, 1] | thermal_inferno
+fov 25 front    150 m @ 35 deg | person   32 px | est     0 m | found 0/2 | armed 0/2 | possible 0/2 | reported people [1, 1] | rgbt
+[DISTANT] small-person search found 1 additional people
+fov 25 front    200 m @ 35 deg | person   22 px | est   182 m | found 1/2 | armed 0/2 | possible 0/2 | reported people [1, 1] | rgbt
+Results in C:\RTR_Project\AirSimDemos\range_test_results\20261111_223330

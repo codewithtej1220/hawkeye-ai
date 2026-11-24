@@ -1,0 +1,106 @@
+{
+  "model": "hawkeye_v3.pt",
+  "paired_llvip": {
+    "normal": {
+      "rgb": 0.7857938575159633,
+      "thermal_grey": 0.9121936505869986,
+      "thermal_inferno": 0.920166479022296,
+      "rgbt": 0.9152146913702172,
+      "auto": 0.9151154399993082,
+      "auto_picks": {
+        "rgbt": 412,
+        "thermal_inferno": 428
+      }
+    },
+    "dark": {
+      "rgb": 0.47339287751061615,
+      "thermal_grey": 0.9121936505869986,
+      "thermal_inferno": 0.920166479022296,
+      "rgbt": 0.9240051365373955,
+      "auto": 0.920166479022296,
+      "auto_picks": {
+        "thermal_inferno": 840
+      }
+    },
+    "fog/smoke": {
+      "rgb": 0.526741477852566,
+      "thermal_grey": 0.9016120589829516,
+      "thermal_inferno": 0.9152383160426235,
+      "rgbt": 0.9158245860608202,
+      "auto": 0.9156193728040137,
+      "auto_picks": {
+        "thermal_inferno": 817,
+        "rgbt": 23
+      }
+    },
+    "glare": {
+      "rgb": 0.7634382171489863,
+      "thermal_grey": 0.9121936505869986,
+      "thermal_inferno": 0.920166479022296,
+      "rgbt": 0.9138834281377342,
+      "auto": 0.913835596868649,
+      "auto_picks": {
+        "rgbt": 777,
+        "thermal_inferno": 63
+      }
+    },
+    "thermal crossover": {
+      "rgb": 0.7857938575159633,
+      "thermal_grey": 0.8581064762846525,
+      "thermal_inferno": 0.8397193300982964,
+      "rgbt": 0.8465947460532194,
+      "auto": 0.8527498295397752,
+      "auto_picks": {
+        "rgbt": 412,
+        "thermal_grey": 428
+      }
+    }
+  },
+  "thermal_tcwd": {
+    "thermal_grey/person": 0.8229947202519166,
+    "thermal_grey/weapon": 0.9443302364248265,
+    "thermal_inferno/person": 0.8135745415831276,
+    "thermal_inferno/weapon": 0.9424705791869171
+  },
+  "thermal_hituav": {
+    "thermal_grey/person": 0.9027990846626701,
+    "thermal_inferno/person": 0.8975681268378947
+  },
+  "rgb_dangerous": {
+    "rgb/person": 0.7306146896342927,
+    "rgb/weapon": 0.7003150069958477,
+    "greyscale_camera/person": 0.6848845700137461,
+    "greyscale_camera/weapon": 0.6855408268990582
+  },
+  "rgb_rifles": {
+    "rgb/person": 0.6860327766314543,
+    "rgb/weapon": 0.8047857053300359,
+    "greyscale_camera/person": 0.6487245677808798,
+    "greyscale_camera/weapon": 0.7959355960706268
+  },
+  "rgb_weapons": {
+    "rgb/person": 0.9598067581278195,
+    "rgb/weapon": 0.8337886662695804,
+    "greyscale_camera/person": 0.9506775838902587,
+    "greyscale_camera/weapon": 0.8209963305597726
+  },
+  "pose_people": {
+    "rgb/person": 0.8076027524262771,
+    "greyscale_camera/person": 0.7642961553504458
+  },
+  "pose_false_alarms": {
+    "images": 545,
+    "false_weapon_images": 12,
+    "false_weapon_rate": 0.022018348623853212
+  },
+  "sim": {
+    "rgb/person": 0.16419141914191435,
+    "rgb/weapon": 0.0,
+    "thermal_grey/person": 1.0000000000000007,
+    "thermal_grey/weapon": 0.0,
+    "thermal_inferno/person": 0.9854397204426322,
+    "thermal_inferno/weapon": 0.0,
+    "rgbt/person": 0.9743739079790321,
+    "rgbt/weapon": 0.0
+  }
+}
