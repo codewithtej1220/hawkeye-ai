@@ -2,6 +2,8 @@
 
 Autonomous thermal drone surveillance for India's defense systems
 
+> **📦 Fully Open Source:** This complete project is available on GitHub at [https://github.com/codewithtej1220/hawkeye-ai](https://github.com/codewithtej1220/hawkeye-ai). Clone, install dependencies, run `git lfs pull` for models, and launch the entire system end-to-end.
+
 ## 📋 Project Overview
 
 HawkEye AI is a drone-based surveillance system that detects people and the weapons they carry,
@@ -488,8 +490,10 @@ pruned beyond 20,000 (`event_max` in `config.py`).
 
 ```
 C:\RTR_Project\
-├── RUN_ALL_HAWKEYE.bat              # starts everything (add "auto" for a hands-free drone)
+├── RUN_ALL_HAWKEYE.bat              # launcher: starts backend, dashboard, simulation, capture
+├── demo_media/                      # test footage (concealed weapon thermal video)
 ├── project/
+│   ├── PREPARE_AND_RUN.bat          # alternative launcher
 │   ├── backend/                     # FastAPI server
 │   │   ├── main.py                  # API endpoints, live stream, event logging
 │   │   ├── app/
@@ -501,27 +505,69 @@ C:\RTR_Project\
 │   │   │   ├── media.py             # uploaded photo/video analysis
 │   │   │   ├── config.py            # settings
 │   │   │   └── schemas.py           # data structures
+│   │   ├── requirements.txt         # Python dependencies
 │   │   └── data/                    # event database + snapshots (created on first run)
-│   ├── frontend/src/app/            # React dashboard
+│   ├── frontend/src/app/            # React dashboard (Vite + TypeScript)
 │   │   ├── App.tsx                  # shell, tabs, live connection, alerts
 │   │   ├── LiveOps.tsx              # live view, camera panels, telemetry, detections
 │   │   ├── AnalyzeMedia.tsx         # upload / link analysis
 │   │   ├── EventLog.tsx             # event log, review, export
 │   │   └── shared.ts                # shared types and helpers
-│   └── models/                      # detector weights
+│   └── models/                      # detector weights (Git LFS)
+│       ├── hawkeye_real_yolo11m.pt  # main detector v2 (~39 MB)
+│       ├── hawkeye_v3.pt            # ensemble detector v3 (~39 MB)
+│       ├── armed_classifier.pt      # distant armed-person classifier (~5 MB)
+│       ├── hawkeye_thermal_rifle.pt # thermal rifle specialist (~39 MB)
+│       └── weapon_model.pt          # legacy weapon detector (~39 MB)
 ├── AirSimDemos/
-│   ├── thermal.py                   # drone capture and flight
+│   ├── thermal.py                   # drone capture and flight control
 │   ├── sim_common.py                # thermal rendering, segmentation, telemetry
-│   ├── sim_actor.py                 # soldier routine
-│   ├── range_test.py                # detection range test
-│   ├── capture_sim_dataset.py       # auto-labelled training frames
-│   ├── airsim_settings.json         # AirSim camera settings (1280x960)
-│   ├── unreal_tools/                # map fix script (soldier AI + navigation)
-│   └── ForestSimulation/ForestSim/  # Unreal Engine project
-├── HawkEye_Training/                # datasets, training scripts, trained models
-├── training/                        # dataset preparation and evaluation scripts
-├── Main_Files/                      # reference copies of the core files
-└── README.md
+│   ├── sim_actor.py                 # soldier patrol routine
+│   ├── range_test.py                # detection range measurement script
+│   ├── capture_sim_dataset.py       # auto-labelled training data generator
+│   ├── airsim_settings.json         # AirSim camera settings (1280×960)
+│   ├── unreal_tools/                # Unreal Blueprint editing scripts
+│   │   └── fix_soldier_ai.py        # adds AI controller + navigation to soldier
+│   └── ForestSimulation/ForestSim/  # Unreal Engine 4.27 project (Git LFS)
+├── Autonomy/                        # NEW: Reinforcement Learning autonomous patrol
+│   ├── RUN_AUTONOMY.bat             # launcher for autonomous patrol mode
+│   ├── autonomous_patrol.py         # main patrol loop with investigation behavior
+│   ├── airsim_pilot.py              # AirSim drone interface (velocity control, gimbal)
+│   ├── nav_core.py                  # collision avoidance, safety shield
+│   ├── investigate.py               # person investigation behavior (approach, zoom, circle)
+│   ├── train_policy.py              # PPO training script
+│   ├── train_world.py               # simplified training environment
+│   ├── test_offline.py              # offline policy evaluation
+│   ├── models/
+│   │   ├── nav_policy.zip           # trained PPO policy (1.9 MB, Git LFS)
+│   │   └── *.json                   # training and evaluation reports
+│   └── README.md                    # training details, results, usage
+├── training/                        # real-data training and evaluation pipeline
+│   ├── RUN_TRAINING.bat             # download datasets and train from scratch
+│   ├── train.py                     # YOLO fine-tuning script
+│   ├── evaluate.py                  # test-set evaluation
+│   ├── evaluate_modalities.py       # multi-modal evaluation (RGB/thermal/RGBT)
+│   ├── prepare_dataset.py           # dataset assembly and augmentation
+│   ├── build_v3_dataset.py          # v3 training data with INFERNO copies
+│   ├── build_armed_crops.py         # armed-person classifier dataset
+│   ├── distance_benchmark.py        # small-person detection evaluation
+│   ├── temporal_benchmark.py        # multi-frame weapon confirmation
+│   ├── weapon_threshold_sweep.py    # specialist model threshold tuning
+│   ├── sources.py                   # dataset download URLs
+│   ├── requirements.txt             # training dependencies
+│   ├── eval/                        # evaluation result JSON files
+│   └── README.md                    # training pipeline documentation
+└── README.md                        # this file
+
+## What's NOT in the repository (excluded by .gitignore)
+
+These are either too large, regenerated by scripts, or contain local runtime data:
+
+- **HawkEye_Training/** (~4.9 GB) – training datasets and checkpoints. Download with `training/RUN_TRAINING.bat`.
+- **node_modules/** – install with `npm install` in `project/frontend/`.
+- **project/backend/data/** – event database and snapshots (created at runtime).
+- **live_record/**, range_test_results/ – capture session outputs.
+- **Intermediate/**, **Saved/**, **Binaries/** – Unreal Engine build artifacts (regenerated when you open the .uproject).
 ```
 
 ---
