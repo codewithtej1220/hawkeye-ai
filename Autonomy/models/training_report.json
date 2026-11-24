@@ -1,0 +1,17 @@
+{
+ "policy": {
+  "episodes": 60,
+  "crash_rate": 0.05,
+  "goals_per_episode": 7.9,
+  "shield_interventions_per_1000_steps": 245.1,
+  "steps": 70224
+ },
+ "straight_to_goal_baseline": {
+  "episodes": 60,
+  "crash_rate": 0.0,
+  "goals_per_episode": 2.15,
+  "shield_interventions_per_1000_steps": 788.8,
+  "steps": 72000
+ },
+ "trained_steps": 6000640
+}

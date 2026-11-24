@@ -1,0 +1,26 @@
+{
+ "waypoints_reached": 10,
+ "laps": 1,
+ "collisions": 0,
+ "shield_interventions": 318,
+ "steps": 2294,
+ "min_obstacle_m": 5.6,
+ "rechecks": 13,
+ "confirmed_sightings": 3,
+ "investigations": 3,
+ "investigation_closest_m": [
+  9.1,
+  11.2,
+  9.0
+ ],
+ "depth_holds": 2,
+ "minutes": 5.0,
+ "detection_frames_sent": 144,
+ "detection_frames_analysed": 140,
+ "frames_with_people": 45,
+ "frames_with_confirmed_people": 39,
+ "frames_armed": 19,
+ "control_hz": 7.6,
+ "depth_frames": 880,
+ "median_depth_age_s": 0.2
+}
