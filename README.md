@@ -2,8 +2,6 @@
 
 Autonomous thermal drone surveillance for India's defense systems
 
-> **📦 Fully Open Source:** This complete project is available on GitHub at [https://github.com/codewithtej1220/hawkeye-ai](https://github.com/codewithtej1220/hawkeye-ai). Clone, install dependencies, run `git lfs pull` for models, and launch the entire system end-to-end.
-
 ## 📋 Project Overview
 
 HawkEye AI is a drone-based surveillance system that detects people and the weapons they carry,
@@ -264,8 +262,6 @@ are raised to High.
 
 **Limits:**
 
-- **Smallest people:** below about 32 px tall (a person roughly 100 m away with a typical
-  drone camera), weapons are rarely found by any method.
 - **Optics:** a camera with optical zoom or a higher resolution would help more than any model.
 
 ### Stand-off weapon identification ("detect then zoom")
@@ -364,7 +360,6 @@ pairs (v2 model):
 
 - **Lying-down people:** no real thermal data of lying people exists, so thermal coverage of
   lying-down people comes from rotated training images.
-- **Concealed and distant weapons:** see the two sections above.
 
 ---
 
@@ -655,7 +650,7 @@ WebSocket
 ## Team
 
 HawkEye AI — Thermal Surveillance System
-Co-created with a friend; now developed and maintained by Amula Bhanuteja.
+Created by my team during Real-time Research Project; now developed and maintained by me.
 
 ---
 
